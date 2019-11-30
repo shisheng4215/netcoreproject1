@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WebApplication2019113001.Data.Entites;
 
 namespace WebApplication2019113001.Data
 {
