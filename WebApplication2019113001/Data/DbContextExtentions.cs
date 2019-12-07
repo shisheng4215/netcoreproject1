@@ -27,6 +27,60 @@ namespace WebApplication2019113001.Data
 
                 UserManager.CreateAsync(user, "Password1*").GetAwaiter().GetResult();
             }
+
+            AddProducts(context);
+        }
+        private static void AddProducts(EcommerceContext context)
+        {
+            if (context.Products.Any() == false)
+            {
+                var products = new List<Product>()
+                {
+                    new Product
+                    {
+                        Name="Samsung Galaxy S8",
+                        Slug="samsung-galaxy-s8",
+                        Thumbnail="http://placehold.it/200x300",
+                        ShortDescription="Samsung Galaxy S8 Android smartphone with true edge to edge display",
+                        Description="Lorem ipsum dolor sitamet consectetur adipisicing elit.Perferendistempora ad cum laudantium",
+                        Price=499.99M
+
+                    },
+                    new Product
+                    {
+                        Name="Apple X",
+                        Slug="apple-x",
+                        Thumbnail="http://placehold.it/200x300",
+                        ShortDescription="Apple IOS smartphone ",
+                        Description="fdafdafdafdafd fdafdafds apple apple apple apple ora ad cum laudantium",
+                        Price=599.99M
+
+                    },
+                     new Product
+                    {
+                        Name="Huawei P30",
+                        Slug="huawei-p30",
+                        Thumbnail="http://placehold.it/200x300",
+                        ShortDescription="华为 P30 智能手机 smartphone ",
+                        Description="华为 P30 dfdafdafdafdafdafdafdafdafdafda",
+                        Price=399.99M
+
+                    },
+                      new Product
+                    {
+                        Name="小米9",
+                        Slug="xiaomi-9",
+                        Thumbnail="http://placehold.it/200x300",
+                        ShortDescription="小米9 智能手机 smartphone ",
+                        Description="小米9 ssssssssssdfwwwwwwwwwwqqqqqqqqqqqqqqqdfdafdafdafdafdafdafdafdafdafda",
+                        Price=299.99M
+
+                    }
+                };
+
+                context.Products.AddRange(products);
+                context.SaveChanges();
+            }
         }
 
     }
