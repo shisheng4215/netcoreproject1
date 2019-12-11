@@ -28,8 +28,9 @@ namespace WebApplication2019113001.Features.Products
             return Ok(products);
         }
 
-        [HttpGet("{Slug}")]
-        public async Task<IActionResult> get(string slug)
+        [HttpGet("{slug}")]
+        [EnableCors]
+        public async Task<IActionResult> Get(string slug)
         {
             var product = await _db.Products.SingleOrDefaultAsync(x => x.Slug == slug);
             if (product == null)

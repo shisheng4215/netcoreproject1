@@ -40,7 +40,7 @@ namespace WebApplication2019113001.Data
                     {
                         Name="Samsung Galaxy S8",
                         Slug="samsung-galaxy-s8",
-                        Thumbnail="http://placehold.it/200x300",
+                        Thumbnail="http://localhost:8080/samsung-s8.jpg",
                         ShortDescription="Samsung Galaxy S8 Android smartphone with true edge to edge display",
                         Description="Lorem ipsum dolor sitamet consectetur adipisicing elit.Perferendistempora ad cum laudantium",
                         Price=499.99M
@@ -50,7 +50,7 @@ namespace WebApplication2019113001.Data
                     {
                         Name="Apple X",
                         Slug="apple-x",
-                        Thumbnail="http://placehold.it/200x300",
+                        Thumbnail="http://localhost:8080/apple-x.jpg",
                         ShortDescription="Apple IOS smartphone ",
                         Description="fdafdafdafdafd fdafdafds apple apple apple apple ora ad cum laudantium",
                         Price=599.99M
@@ -60,7 +60,7 @@ namespace WebApplication2019113001.Data
                     {
                         Name="Huawei P30",
                         Slug="huawei-p30",
-                        Thumbnail="http://placehold.it/200x300",
+                        Thumbnail="http://localhost:8080/p30.png",
                         ShortDescription="华为 P30 智能手机 smartphone ",
                         Description="华为 P30 dfdafdafdafdafdafdafdafdafdafda",
                         Price=399.99M
@@ -70,7 +70,7 @@ namespace WebApplication2019113001.Data
                     {
                         Name="小米9",
                         Slug="xiaomi-9",
-                        Thumbnail="http://placehold.it/200x300",
+                        Thumbnail="http://localhost:8080/mi9.jpg",
                         ShortDescription="小米9 智能手机 smartphone ",
                         Description="小米9 ssssssssssdfwwwwwwwwwwqqqqqqqqqqqqqqqdfdafdafdafdafdafdafdafdafdafda",
                         Price=299.99M

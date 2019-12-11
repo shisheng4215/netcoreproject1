@@ -41,7 +41,7 @@ namespace WebApplication2019113001
             {
                 options.AddDefaultPolicy(builder =>
                 {
-                    builder.WithOrigins("http://localhost:8080");
+                    builder.WithOrigins("http://localhost:8080", "http://192.168.31.108:8080");
                 });
             });
 
