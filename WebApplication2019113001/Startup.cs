@@ -27,7 +27,7 @@ namespace WebApplication2019113001
         public Startup(IConfiguration configuration,IHostingEnvironment env)
         {
             Configuration = configuration;
-            _env = env
+            _env = env;
         }
 
         public IConfiguration Configuration { get; }
