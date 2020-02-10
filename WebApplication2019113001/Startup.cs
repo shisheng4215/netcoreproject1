@@ -16,6 +16,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
+using Stripe;
 using WebApplication2019113001.Data;
 using WebApplication2019113001.Data.Entites;
 
@@ -77,11 +78,25 @@ namespace WebApplication2019113001
 
             services.AddCors(options =>
             {
-                options.AddDefaultPolicy(builder =>
-                {
-                    builder.WithOrigins("http://localhost:8080", "http://192.168.31.108:8080");
-                });
+                options.AddDefaultPolicy(
+                    builder =>
+                    {
+
+                        builder.WithOrigins("http://localhost:8080",
+                                            "http://www.contoso.com");
+                    });
+
+                options.AddPolicy("AnotherPolicy",
+                    builder =>
+                    {
+                        builder.WithOrigins("https://localhost")
+                                            .AllowAnyHeader()
+                                            .AllowAnyMethod();
+                    });
+
             });
+
+
 
         }
 
@@ -97,12 +112,14 @@ namespace WebApplication2019113001
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
-          
-            app.UseHttpsRedirection();
 
+             app.UseHttpsRedirection();
+            
             app.UseAuthentication();
 
             app.UseMvc();
+
+            StripeConfiguration.SetApiKey("sk_test_ypUXco2NlbaI07QZUehhxRv6000Lnm04DR");
         }
     }
 }

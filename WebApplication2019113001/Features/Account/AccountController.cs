@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -21,6 +22,7 @@ namespace WebApplication2019113001.Features.Account
         }
         
         [HttpPost]
+        [EnableCors("AnotherPolicy")]
         public async Task<IActionResult> Register([FromBody] RegisterViewModel model)
         {
             if (!ModelState.IsValid)
@@ -41,6 +43,7 @@ namespace WebApplication2019113001.Features.Account
                 LockoutEnabled = true
             };
 
+            Console.WriteLine(user);
             var registerResult = await _userManager.CreateAsync(user, model.Password);
 
             if (!registerResult.Succeeded)

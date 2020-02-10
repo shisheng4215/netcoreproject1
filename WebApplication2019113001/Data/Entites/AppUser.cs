@@ -15,10 +15,9 @@ namespace WebApplication2019113001.Data.Entites
         [NotMapped]
         public string FullName
         {
-            get
-            {
-                return $"{FirstName} {LastName}";
-            }
+            get{ return $"{FirstName} {LastName}"; }
         }
+
+        public List<Order> Orders { get; set; } = new List<Order>();
     }
 }

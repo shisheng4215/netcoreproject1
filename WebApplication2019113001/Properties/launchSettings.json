@@ -36,7 +36,12 @@
       "launchBrowser": true
     },
     "ISS2": {
-      "commandName": "Project"
+      "commandName": "Project",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "nativeDebugging": false,
+      "applicationUrl": "http://localhost:2972"
     }
   }
 }

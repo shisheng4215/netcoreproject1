@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using WebApplication2019113001.Data;
@@ -9,9 +10,10 @@ using WebApplication2019113001.Data;
 namespace WebApplication2019113001.Migrations
 {
     [DbContext(typeof(EcommerceContext))]
-    partial class EcommerceContextModelSnapshot : ModelSnapshot
+    [Migration("20200205180347_order3")]
+    partial class order3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -269,11 +271,17 @@ namespace WebApplication2019113001.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int>("ColourId");
+                    b.Property<int>("ColorId");
 
                     b.Property<int>("OrderId");
 
                     b.Property<int>("ProductId");
+
+                    b.Property<int?>("ProductVariantColourId");
+
+                    b.Property<int?>("ProductVariantProductId");
+
+                    b.Property<int?>("ProductVariantStorageId");
 
                     b.Property<int>("Quantity");
 
@@ -283,7 +291,7 @@ namespace WebApplication2019113001.Migrations
 
                     b.HasIndex("OrderId");
 
-                    b.HasIndex("ProductId", "ColourId", "StorageId");
+                    b.HasIndex("ProductVariantProductId", "ProductVariantColourId", "ProductVariantStorageId");
 
                     b.ToTable("OrderItem");
                 });
@@ -478,8 +486,7 @@ namespace WebApplication2019113001.Migrations
 
                     b.HasOne("WebApplication2019113001.Data.Entites.ProductVariant", "ProductVariant")
                         .WithMany()
-                        .HasForeignKey("ProductId", "ColourId", "StorageId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("ProductVariantProductId", "ProductVariantColourId", "ProductVariantStorageId");
                 });
 
             modelBuilder.Entity("WebApplication2019113001.Data.Entites.Product", b =>

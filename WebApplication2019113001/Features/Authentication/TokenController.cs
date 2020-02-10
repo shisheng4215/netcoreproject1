@@ -5,6 +5,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -15,7 +16,7 @@ using WebApplication2019113001.Data.Entites;
 namespace WebApplication2019113001.Features.Authentication
 {
     [Route("api/[controller]")]
-
+    [ApiController]
     public class TokenController : Controller
     {
         private readonly SignInManager<AppUser> _signInManager;
@@ -33,6 +34,7 @@ namespace WebApplication2019113001.Features.Authentication
             _configuration = configuration;
         }
 
+        [EnableCors("AnotherPolicy")]
         [HttpPost]
         public async Task<IActionResult> GetToken([FromBody]
         LoginViewModel model)
@@ -61,6 +63,7 @@ namespace WebApplication2019113001.Features.Authentication
             return Ok(token);
         }
 
+
         private async Task<TokenViewModel> GenerateToken(AppUser user)
         {
             var claims = new List<Claim>
@@ -88,7 +91,8 @@ namespace WebApplication2019113001.Features.Authentication
                 AccessToken = new JwtSecurityTokenHandler().WriteToken(token),
                 AccessTokenExpiration = expires,
                 FirstName = user.FirstName,
-                LastName = user.LastName
+                LastName = user.LastName,
+                Roles = roles
             };
         }
 

@@ -1,0 +1,16 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <div>
+        @RenderBody()
+        <script src="https://js.stripe.com/v3/"></script>
+        <script src="~/dist/vendor.js" asp-append-version="true"></script>
+        @RenderSection("scripts",required:false)
+    </div>
+</body>
+</html>

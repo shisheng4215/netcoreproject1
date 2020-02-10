@@ -20,7 +20,7 @@ namespace WebApplication2019113001.Features.Filters
         }
 
         [HttpGet]
-        [EnableCors]
+        [EnableCors("AnotherPolicy")]
         public async Task<IActionResult> Get()
         {
             var brands = await _db.Brands.Select(x => x.Name).ToListAsync();

@@ -18,6 +18,8 @@ namespace WebApplication2019113001.Features.Authentication
 
         public string  LastName { get; set; }
 
+        public IEnumerable<string> Roles { get; set; }
+
 
     }
 }

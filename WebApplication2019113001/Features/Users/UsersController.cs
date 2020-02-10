@@ -20,14 +20,14 @@ namespace WebApplication2019113001.Features.Users
             _db = db;
         }
 
-        [EnableCors]
+        [EnableCors("AnotherPolicy")]
         [HttpGet]
         public async Task<IActionResult> Get()
         {
             return Ok(await _db.Users.ToListAsync());
         }
 
-        [EnableCors]
+        [EnableCors("AnotherPolicy")]
         [HttpPost]
         public async Task<IActionResult> Post()
         {
