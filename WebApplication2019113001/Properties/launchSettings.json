@@ -38,7 +38,7 @@
     "ISS2": {
       "commandName": "Project",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Production"
       },
       "nativeDebugging": false,
       "applicationUrl": "http://localhost:2972"
