@@ -151,9 +151,9 @@ namespace WebApplication2019113001.Features.Products
                     colour = new Colour { Name = variant.Colour };
 
                 var capacity = Convert.ToInt32(variant.Storage.Substring(0, variant.Storage.IndexOf("GB")));
-                var storage = await _db.Storage.FirstOrDefaultAsync(x => x.Capacity == capacity);
+                var storage = await _db.Storage.FirstOrDefaultAsync(x => Convert.ToInt32(x.Capacity) == capacity);
                 if (storage == null)
-                    storage = new Storage { Capacity = capacity };
+                    storage = new Storage { Capacity = capacity.ToString() };
 
                 product.ProductVariants.Add(new ProductVariant
                 {

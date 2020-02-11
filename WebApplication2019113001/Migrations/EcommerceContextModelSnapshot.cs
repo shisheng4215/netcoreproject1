@@ -367,7 +367,8 @@ namespace WebApplication2019113001.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int>("Capacity");
+                    b.Property<string>("Capacity")
+                        .IsRequired();
 
                     b.HasKey("Id");
 

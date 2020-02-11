@@ -10,8 +10,8 @@ using WebApplication2019113001.Data;
 namespace WebApplication2019113001.Migrations
 {
     [DbContext(typeof(EcommerceContext))]
-    [Migration("20200205145118_orders")]
-    partial class orders
+    [Migration("20200211063329_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -253,7 +253,7 @@ namespace WebApplication2019113001.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int>("PaymentsStatus");
+                    b.Property<int>("PaymentStatus");
 
                     b.Property<DateTime>("Placed");
 
@@ -271,17 +271,11 @@ namespace WebApplication2019113001.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int>("ColorId");
+                    b.Property<int>("ColourId");
 
                     b.Property<int>("OrderId");
 
                     b.Property<int>("ProductId");
-
-                    b.Property<int?>("ProductVariantColourId");
-
-                    b.Property<int?>("ProductVariantProductId");
-
-                    b.Property<int?>("ProductVariantStorageId");
 
                     b.Property<int>("Quantity");
 
@@ -291,7 +285,7 @@ namespace WebApplication2019113001.Migrations
 
                     b.HasIndex("OrderId");
 
-                    b.HasIndex("ProductVariantProductId", "ProductVariantColourId", "ProductVariantStorageId");
+                    b.HasIndex("ProductId", "ColourId", "StorageId");
 
                     b.ToTable("OrderItem");
                 });
@@ -375,7 +369,8 @@ namespace WebApplication2019113001.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int>("Capacity");
+                    b.Property<string>("Capacity")
+                        .IsRequired();
 
                     b.HasKey("Id");
 
@@ -486,7 +481,8 @@ namespace WebApplication2019113001.Migrations
 
                     b.HasOne("WebApplication2019113001.Data.Entites.ProductVariant", "ProductVariant")
                         .WithMany()
-                        .HasForeignKey("ProductVariantProductId", "ProductVariantColourId", "ProductVariantStorageId");
+                        .HasForeignKey("ProductId", "ColourId", "StorageId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("WebApplication2019113001.Data.Entites.Product", b =>

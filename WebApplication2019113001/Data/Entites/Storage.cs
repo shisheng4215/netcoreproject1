@@ -11,7 +11,7 @@ namespace WebApplication2019113001.Data.Entites
         public int Id { get; set; }
 
         [Required]
-        public int  Capacity { get; set; }
+        public string  Capacity { get; set; }
 
         public List<ProductVariant> ProductVariants { get; set; } =
             new List<ProductVariant>();
