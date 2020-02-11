@@ -2,8 +2,8 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using WebApplication2019113001.Data;
 
 namespace WebApplication2019113001.Migrations
@@ -15,14 +15,15 @@ namespace WebApplication2019113001.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn)
                 .HasAnnotation("ProductVersion", "2.2.6-servicing-10079")
-                .HasAnnotation("Relational:MaxIdentifierLength", 63);
+                .HasAnnotation("Relational:MaxIdentifierLength", 128)
+                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("ClaimType");
 
@@ -40,7 +41,8 @@ namespace WebApplication2019113001.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<int>", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("ClaimType");
 
@@ -103,7 +105,8 @@ namespace WebApplication2019113001.Migrations
             modelBuilder.Entity("WebApplication2019113001.Data.Entites.AppRole", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken();
@@ -118,7 +121,8 @@ namespace WebApplication2019113001.Migrations
 
                     b.HasIndex("NormalizedName")
                         .IsUnique()
-                        .HasName("RoleNameIndex");
+                        .HasName("RoleNameIndex")
+                        .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles");
                 });
@@ -126,7 +130,8 @@ namespace WebApplication2019113001.Migrations
             modelBuilder.Entity("WebApplication2019113001.Data.Entites.AppUser", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("AccessFailedCount");
 
@@ -172,7 +177,8 @@ namespace WebApplication2019113001.Migrations
 
                     b.HasIndex("NormalizedUserName")
                         .IsUnique()
-                        .HasName("UserNameIndex");
+                        .HasName("UserNameIndex")
+                        .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers");
                 });
@@ -180,7 +186,8 @@ namespace WebApplication2019113001.Migrations
             modelBuilder.Entity("WebApplication2019113001.Data.Entites.Brand", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Name")
                         .IsRequired();
@@ -193,7 +200,8 @@ namespace WebApplication2019113001.Migrations
             modelBuilder.Entity("WebApplication2019113001.Data.Entites.Colour", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Name")
                         .IsRequired();
@@ -206,7 +214,8 @@ namespace WebApplication2019113001.Migrations
             modelBuilder.Entity("WebApplication2019113001.Data.Entites.Feature", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Name")
                         .IsRequired();
@@ -219,7 +228,8 @@ namespace WebApplication2019113001.Migrations
             modelBuilder.Entity("WebApplication2019113001.Data.Entites.Image", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("ProductId");
 
@@ -236,7 +246,8 @@ namespace WebApplication2019113001.Migrations
             modelBuilder.Entity("WebApplication2019113001.Data.Entites.OS", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Name")
                         .IsRequired();
@@ -249,7 +260,8 @@ namespace WebApplication2019113001.Migrations
             modelBuilder.Entity("WebApplication2019113001.Data.Entites.Order", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("PaymentStatus");
 
@@ -267,7 +279,8 @@ namespace WebApplication2019113001.Migrations
             modelBuilder.Entity("WebApplication2019113001.Data.Entites.OrderItem", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("ColourId");
 
@@ -291,7 +304,8 @@ namespace WebApplication2019113001.Migrations
             modelBuilder.Entity("WebApplication2019113001.Data.Entites.Product", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("BrandId");
 
@@ -303,7 +317,8 @@ namespace WebApplication2019113001.Migrations
 
                     b.Property<int>("OSId");
 
-                    b.Property<decimal>("ScreenSize");
+                    b.Property<decimal>("ScreenSize")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("ShortDescription")
                         .IsRequired();
@@ -311,9 +326,11 @@ namespace WebApplication2019113001.Migrations
                     b.Property<string>("Slug")
                         .IsRequired();
 
-                    b.Property<decimal>("StandbyTime");
+                    b.Property<decimal>("StandbyTime")
+                        .HasColumnType("decimal(18,2)");
 
-                    b.Property<decimal>("TalkTime");
+                    b.Property<decimal>("TalkTime")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("Thumbnail")
                         .IsRequired();
@@ -351,7 +368,8 @@ namespace WebApplication2019113001.Migrations
 
                     b.Property<int>("StorageId");
 
-                    b.Property<decimal>("Price");
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
 
                     b.HasKey("ProductId", "ColourId", "StorageId");
 
@@ -365,7 +383,8 @@ namespace WebApplication2019113001.Migrations
             modelBuilder.Entity("WebApplication2019113001.Data.Entites.Storage", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Capacity")
                         .IsRequired();
@@ -437,7 +456,9 @@ namespace WebApplication2019113001.Migrations
 
                     b.OwnsOne("WebApplication2019113001.Data.Entites.Address", "DeliveryAddress", b1 =>
                         {
-                            b1.Property<int>("OrderId");
+                            b1.Property<int>("OrderId")
+                                .ValueGeneratedOnAdd()
+                                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                             b1.Property<string>("Address1")
                                 .IsRequired();

@@ -39,7 +39,7 @@ namespace WebApplication2019113001
             if(_env.EnvironmentName == EnvironmentName.Development)
             {
                 services.AddDbContext<EcommerceContext>(options =>
-                    options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
+                    options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             }
             else
             {

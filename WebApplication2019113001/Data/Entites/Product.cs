@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -26,12 +27,15 @@ namespace WebApplication2019113001.Data.Entites
         public string Description { get; set; }
 
         [Required]
+        [Column(TypeName = "decimal(18,2)")]
         public decimal ScreenSize { get; set; }
 
         [Required]
+        [Column(TypeName="decimal(18,2)")]
         public decimal TalkTime { get; set; }
 
         [Required]
+        [Column(TypeName = "decimal(18,2)")]
         public decimal StandbyTime { get; set; }
 
         [Required]
