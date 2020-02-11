@@ -23,7 +23,7 @@
         "ASPNETCORE_ENVIRONMENT": "Production"
       },
       "nativeDebugging": false,
-      "applicationUrl": "http://localhost:2972"
+      "applicationUrl": "http://localhost:8080"
     }
   }
 }
